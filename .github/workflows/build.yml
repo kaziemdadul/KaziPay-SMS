@@ -14,13 +14,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
-    - name: Fix Missing Files
+    - name: Fix Missing Files & Download Real Wrapper
       run: |
         echo "android.useAndroidX=true" > gradle.properties
         echo "android.enableJetifier=true" >> gradle.properties
         mkdir -p gradle/wrapper
+        
+        # Download real gradlew script
+        curl -L -o gradlew https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradlew
+        chmod +x gradlew
+        
+        # Download real wrapper jar
         curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradle/wrapper/gradle-wrapper.jar
-        chmod +x ./gradlew
         
     - name: Build APK
       run: bash ./gradlew assembleDebug --no-daemon
