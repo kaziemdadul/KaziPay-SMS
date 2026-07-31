@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+android {
+    namespace 'com.zinipay'
+    compileSdk 33
+    defaultConfig {
+        applicationId "com.zinipay"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+}
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+}

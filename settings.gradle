@@ -1,0 +1,2 @@
+rootProject.name = "ZiniPay"
+include ':app'
